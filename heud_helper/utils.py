@@ -8,7 +8,7 @@ This information is pulled from and extrapolated from the
 file.
 
 These are general utils. For more robust functions, look to
-heud_helper/functions.py
+heud_helper/funcs.py
 
 NOTE: must import these functions from within the infodict function
 definition.
