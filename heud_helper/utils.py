@@ -120,7 +120,7 @@ def get_format_key(desc2count, key):
         yield num + '-' + key[0]
 
 # method to load the json sidecar
-def load_json():
+def load_json(heuristic):
     '''
     Uses the a json sidecar to facilitate feeding extra information
     into the environment at run time for heudiconv.
@@ -129,9 +129,10 @@ def load_json():
     the output directory.
     NOTE: could also be useful for saving heudiconv runtime args
     for reproducibility.
+    Input must be the value of __file__ called within the heuristic file
     '''
     # get the path of the json sidecar
-    json_path = pathlib.Path(__file__).parent.resolve().with_suffix('.json')
+    json_path = pathlib.Path(heuristic).parent.resolve().with_suffix('.json')
     # load the json file into a directory
     with open(json_path, 'r') as f:
         json_data = json.load(f)
