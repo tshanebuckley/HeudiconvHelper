@@ -70,7 +70,7 @@ def extract_desc_info(seqinfo):
         # otherwise, the item already exists in the dict
         else:
             # increment the count for this item
-            desc2count[curr_key] = desc2count[curr_key].append(s.series_id)
+            desc2count[curr_key].append(s.series_id)
     # for each item in the dictionary
     for key in desc2count.keys():
         # order the tuple and convert it to a tuple
