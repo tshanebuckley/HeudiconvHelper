@@ -108,6 +108,8 @@ def get_format_key(desc2count, key):
     '''
     # get the list of sorted integers as strings as a list
     sorted_series_nums = list(desc2count[key])
+    # return None if the generator has run its course
+    return None
     # for each series number in the dictionary
     for key in desc2count.keys():
         # yield the next series_id
