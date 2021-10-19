@@ -112,9 +112,9 @@ def get_format_key(desc2count, key):
     # return None if the generator has run its course
     #return None
     # for each series number in the dictionary
-    for key in desc2count.keys():
+    for num in sorted_series_nums:
         # yield the next series_id
-        yield sorted_series_nums.pop(0) + key[0]
+        yield num + '-' + key[0]
 
 # method to get the actual directory name from the data in seqinfo and the path to the directory
 def seqinfo_to_dirname():
