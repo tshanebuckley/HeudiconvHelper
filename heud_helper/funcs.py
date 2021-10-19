@@ -1,4 +1,4 @@
-from utils import *
+from .utils import *
 
 # method to get the actual directory name from the data in seqinfo and the path to the directory
 # TODO: finish
