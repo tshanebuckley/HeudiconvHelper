@@ -62,7 +62,7 @@ def extract_desc_info(seqinfo):
         # get the description of the item at this iteration
         curr_desc = split_id_and_desc(s.series_id)['desc']
         # get the current key, a tuple of the series_description and protocol_name
-        curr_key = (curr_desc, s.protocol_name)
+        curr_key = (curr_desc, s.series_description)
         # if the item does not already exist
         if curr_key not in desc2count.keys():
             # initialize it into the dict with the count being at 1
