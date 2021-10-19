@@ -10,7 +10,8 @@ file.
 NOTE: must import these functions from within the infodict function
 definition.
 
-e.g. from heud_helper import *
+e.g. import heud_helper as heuh
+heuh.get_series_ids()
 '''
 
 # import dependencies
