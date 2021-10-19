@@ -20,7 +20,7 @@ import json
 import os
 
 # simply gets the list of all series_ids
-def get_series_ids():
+def get_series_ids(seqinfo):
     '''
     Iterates through the seqinfo getting the ids 
     and returns the list of them.
