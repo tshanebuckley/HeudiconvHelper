@@ -92,7 +92,8 @@ def order_ids_by_num(series_id_list):
         # get the number as an int and append it to the list
         num_list.append(int(split_id_and_desc(id)['num']))
     # order the list and convert back to strings
-    num_list = [str(x) for x in num_list.sort()]
+    num_list.sort()
+    num_list = [str(x) for x in num_list]
     # convert the list to a tuple
     num_tuple = tuple(num_list)
     # return the tuple
