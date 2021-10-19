@@ -7,6 +7,9 @@ This information is pulled from and extrapolated from the
 'seqinfo' that is normally looped over in a heudiconv config
 file.
 
+These are general utils. For more robust functions, look to
+heud_helper/functions.py
+
 NOTE: must import these functions from within the infodict function
 definition.
 
@@ -116,26 +119,21 @@ def get_format_key(desc2count, key):
         # yield the next series_id
         yield num + '-' + key[0]
 
-# method to get the actual directory name from the data in seqinfo and the path to the directory
-def seqinfo_to_dirname():
+# method to load the json sidecar
+def load_json():
     '''
-    Uses the files in the .heudiconv directory of a BIDS
-    directory to get the path to the raw data and create a
-    dictionary from series_id to dir_name.
-    NOTE: Currently not implemented for longitudinal data.
+    Uses the a json sidecar to facilitate feeding extra information
+    into the environment at run time for heudiconv.
+    The json sidecar must exist next to your heuristic file.
+    NOTE: this file will not be recorded under .heudiconv in
+    the output directory.
+    NOTE: could also be useful for saving heudiconv runtime args
+    for reproducibility.
     '''
-    # initialize a dictionary
-    series_id2dir = dict()
-    # this should be the path of the local heudiconv heuristic file
-    cfg_path = str(pathlib.Path(__file__).parent.resolve())
-    # the directory the heuristic file would be the path of the metadata
-    meta_path = os.path.dirname(cfg_path)
-    # the subject id will be the basename of the metadata path
-    subj_id = os.path.basename(meta_path)
-    # path to the json file in the metadata
-    json_path = meta_path + '/filegroup.json'
+    # get the path of the json sidecar
+    json_path = pathlib.Path(__file__).parent.resolve().with_suffix('.json')
     # load the json file into a directory
     with open(json_path, 'r') as f:
-        filegroup_dict = json.load(f)
-    # print the filegroup to test for now
-    print(filegroup_dict)
+        json_data = json.load(f)
+    # return the dict
+    return json_data
