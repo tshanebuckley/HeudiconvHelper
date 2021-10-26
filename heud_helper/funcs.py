@@ -1,3 +1,22 @@
+'''
+The purpose of this file is to expand upon utils into functions that allow for the 
+meeting certain use cases.
+
+Some use cases these functions plan to tackle:
+1. Getting the directory name of a scan, as there are some instances where this would
+make using Heudiconv more user friendly.
+2. Accessing dicom header metadata beyond what is included in the .tsv under the .heudiconv cache.
+This would most likely be done by using pydicom.
+3. Applying the IntendedFor field to the output json sidecars (may require some atexit shenanigans
+as this would obviously need to run after Heudiconv is finished).
+4. Would also like to allow for a general json sidecar updater as there is other metadata that may
+need fed forward from dicoms or from study knowlegde that could be set in the HeudiconvHelper sidecar.
+5. More robust logs. Heudiconv stores which files were selected for which scan. Would be nice
+to also include a note or log of file not selected from the raw data as a check.
+
+NOTE: will probably look to dcm2bids for inspiration on more features.
+'''
+
 from .utils import *
 
 # method to get the actual directory name from the data in seqinfo and the path to the directory
