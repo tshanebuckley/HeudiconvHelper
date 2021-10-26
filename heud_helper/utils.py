@@ -120,7 +120,7 @@ def get_format_key(desc2count, key):
         yield num + '-' + key[0]
 
 # method to load the json sidecar
-def load_json(heuristic):
+def load_json(heuristic, verify=True):
     '''
     Uses the a json sidecar to facilitate feeding extra information
     into the environment at run time for heudiconv.
@@ -138,3 +138,15 @@ def load_json(heuristic):
         json_data = json.load(f)
     # return the dict
     return json_data
+
+# object that inherits from pydantic to verify some top-level elements exist
+# NOTE: new validators may be made once data start to have nested elements
+class Helper(pydantic.Base):
+    '''
+    Pydantic validator on the json sidecar. The purpose of this object it to
+    validate data of the json sidecar along with providing required inputs that
+    could be used with the Heudiconv cli or for these helper functions.
+    '''
+    dicom_dir: str
+    out_dir: str
+    dicom_path: str
